@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko"> <!-- 문서 언어를 한국어로 설정 -->
+<head>
+    <meta charset="UTF-8" /> <!-- 문자 인코딩을 UTF-8로 설정 (한글 깨짐 방지) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 반응형 웹 설정 -->
+    <title>기본 웹사이트</title> <!-- 브라우저 탭에 표시될 제목 -->
+    <link rel="stylesheet" href="style.css" /> <!-- 외부 CSS 파일 연결 -->
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+<body>
+
+<!-- 헤더 영역: 사이트 상단 고정 부분 -->
+<header>
+    <div class="logo-group">
+        <img src="tmp_logo.png" alt="로고" class="logo" /> <!-- 로고 이미지 -->
+        <h1>사이트 제목</h1> <!-- 사이트 대표 제목 -->
+    </div>
+</header>
+
+<div id="intro-overlay">
+    내 이름을 수어로 표현해보아요.
+</div>
+
+<!-- 메인 콘텐츠 영역: 본문 -->
+<main>
+<!--    <div style="height: 50vh;"></div>-->
+    <!-- 첫 번째 섹션: 소개 영역 등 -->
+    <section class="section section-selected">
+        <div id="selected-buttons"></div>
+    </section>
+
+    <!-- 두 번째 섹션: 예를 들어 서비스, 갤러리 등 -->
+    <section class="section section-button">
+        <div class="consonant-buttons">
+            <!-- 초성 버튼들 -->
+            <button>ㄱ</button>
+            <button>ㄴ</button>
+            <button>ㄷ</button>
+            <button>ㄹ</button>
+            <button>ㅁ</button>
+            <button>ㅂ</button>
+            <button>ㅅ</button>
+            <button>ㅇ</button>
+            <button>ㅈ</button>
+            <button>ㅊ</button>
+            <button>ㅋ</button>
+            <button>ㅌ</button>
+            <button>ㅍ</button>
+            <button>ㅎ</button>
+            <button>된소리</button>
+        </div>
+        <div class="vowel-buttons">
+            <!-- 모음 버튼들 -->
+            <button>ㅏ</button>
+            <button>ㅑ</button>
+            <button>ㅓ</button>
+            <button>ㅕ</button>
+            <button>ㅗ</button>
+            <button>ㅛ</button>
+            <button>ㅜ</button>
+            <button>ㅠ</button>
+            <button>ㅡ</button>
+            <button>ㅣ</button>
+        </div>
+    </section>
+<!--    <div style="height: 100vh;"></div>-->
+</main>
+
+<!-- 푸터: 사이트 하단 정보 영역 -->
+<footer>
+    <p>© 2025 나의 웹사이트</p> <!-- 저작권 정보 등 -->
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+

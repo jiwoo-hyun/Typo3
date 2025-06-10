@@ -1,0 +1,319 @@
+/* 모든 요소에 기본 여백 제거 + 박스 크기 계산 방식 통일 */
+* {
+    margin: 0;                /* 기본 마진 제거 */
+    padding: 0;               /* 기본 패딩 제거 */
+    box-sizing: border-box;  /* border와 padding을 width/height에 포함시킴 */
+}
+
+/* 전체 문서의 기본 글꼴과 배경 설정 */
+body {
+    font-family: sans-serif;  /* 기본 글꼴 설정 (고딕 계열) */
+    line-height: 1.6;         /* 줄 간격 */
+    background-color: #f9f9f9;/* 연한 회색 배경 */
+    color: #333;              /* 텍스트 색상 (짙은 회색) */
+    /* body 자체는 고정 */
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/*body::after {*/
+/*    content: "";*/
+/*    display: block;*/
+/*    height: 100vh; !* 한 화면 크기만큼 공간 추가 *!*/
+/*}*/
+
+/* 헤더 전체 영역 스타일 */
+header {
+    background-color: #333;  /* 어두운 배경색 */
+    color: white;            /* 글자색: 흰색 */
+    padding: 1rem 2rem;      /* 위아래 1rem, 좌우 2rem 여백 */
+    /* header는 고정 영역 (스크롤 안 됨) */
+    flex-shrink: 0; /* 크기 고정 */
+}
+
+.logo-group {
+    display: flex;                /* 로고와 제목을 가로로 나열 */
+    align-items: center;          /* 세로 가운데 정렬 */
+}
+
+/* 로고 이미지 스타일 */
+.logo {
+    height: 40px;                 /* 로고 크기 */
+    margin-right: 1rem;           /* 제목과 간격 */
+    vertical-align: middle;       /* 세로 정렬 보정 */
+}
+
+/* 헤더 내부의 큰 제목 (h1) 스타일 */
+header h1 {
+    margin-bottom: 0rem;   /* 제목 아래 여백 */
+}
+
+/* 메인 콘텐츠 전체 패딩 */
+main {
+    padding: 0rem;           /* 안쪽 여백: 모든 방향 2rem */
+    /* main만 스크롤되도록 설정 */
+    flex-grow: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* 처음에 보여지는 텍스트 */
+#intro-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    z-index: 1000;
+    background-color: #fff; /* 배경 흰색 */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: opacity 1.6s ease, visibility 1.6s ease;
+    text-align: center;         /* 텍스트 가로 정렬 */
+    display: flex;
+    align-items: center;        /* 수직 중앙 정렬 */
+    justify-content: center;    /* 수평 중앙 정렬 */
+    flex-direction: column;
+}
+
+/* 숨겨질 때 */
+#intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* 섹션 등장 애니메이션용 초기 상태 */
+.section {
+    opacity: 0;                    /* 투명도 0 → 안 보임 */
+    transform: translateY(400px);  /* 아래로 살짝 내려가 있음 */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* 부드럽게 변함 */
+}
+
+/* 스크롤 후 보이게 될 때 */
+.section.visible {
+    opacity: 1;                   /* 완전히 보이게 */
+    transform: translateY(0);     /* 제자리로 올라옴 */
+}
+
+/* 섹션 간 여백 */
+/*.section {*/
+/*    padding: 0rem 0rem;           !* 안쪽 여백 *!*/
+/*    margin-bottom: 0rem;          !* 섹션 사이 간격 *!*/
+/*    background-color: #fff;       !* 흰 배경 *!*/
+/*    border-radius: 0px;           !* 둥근 모서리 *!*/
+/*    box-shadow: 0 0px 0px rgba(0,0,0,0.05); !* 살짝 그림자 *!*/
+/*}*/
+
+/* 첫 번째 섹션만 배경색 다르게 하고 싶다면 */
+.section-selected {
+    background-color: #f0f8ff;    /* 연한 하늘색 배경 */
+    /* 기본 상태는 숨김 + 아래로 내려감 */
+    display: flex;
+    align-items: center;   /* 수직 정렬 */
+
+    opacity: 0;
+    transform: translateY(100px);
+    /*transition: opacity 0.5s ease, transform 0.5s ease;*/
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    padding-left: 5vw;  /* 왼쪽 여백 */
+    padding-right: 5vw; /* 선택적으로 우측도 동일하게 맞추기 */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-height: 160px;
+
+}
+
+/* 기존 섹션 스타일 */
+.section-selected.saved {
+    height: 100%;
+    min-height: unset;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f8ff;
+    position: relative; /* 기존 sticky 무시 */
+    top: unset;
+    transform: none;
+}
+
+
+.section-selected.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+    align-items: center;
+}
+
+#selected-buttons {
+    /*margin-top: 1rem;*/
+    display: flex;
+    gap: max(10px, 2vw);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 전환된 상태의 selected-buttons */
+#selected-buttons.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 20px;
+    z-index: 10;
+}
+
+.selected-char {
+    padding: 0.7rem 1.2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    min-height: 160px;
+    min-width: 160px;
+}
+
+/* 드래그 중 시각 효과 */
+.dragging {
+    opacity: 0.5;
+}
+
+/* 전환 버튼 */
+#save-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+}
+
+#save-button.save {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 기존 위치 속성 무효화 */
+    right: auto;
+    z-index: 999;
+}
+
+/* 돌아가기 모드 (상단 중앙) */
+#save-button.back {
+    position: fixed;
+    /*top: 20px;*/
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 기존 위치 속성 무효화 */
+    right: auto;
+    z-index: 999;
+}
+
+/* 두 번째 섹션만 강조하고 싶다면 */
+.section-button {
+    background-color: #fff8dc;    /* 연한 노란색 배경 */
+    /*text-align: center;*/
+    padding: 2rem;
+}
+
+
+
+/* 초성 버튼 컨테이너 */
+.consonant-buttons {
+    /*display: flex;               !* 버튼들을 가로로 정렬 *!*/
+    flex-wrap: wrap;             /* 줄 바꿈 허용 (모바일 대응) */
+    /*justify-content: center;   !* 가로 가운데 정렬 *!*/
+    /*gap: 10px;                   !* 버튼 간 간격 *!*/
+    margin-top: calc(10vh);       /* 위쪽 여백 */
+    margin-bottom: 10vh;         /* 화면 높이의 n%만큼 여백 */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5vw;
+    padding: 0 5vw; /* 양쪽 마진 비율 */
+    justify-content: center;
+}
+
+/* 버튼 개별 스타일 */
+.consonant-buttons button {
+    aspect-ratio: 1 / 1;       /* 정사각형 */
+    width: 100%;               /* grid 셀을 꽉 채움 */
+    font-size: 1.5vw;          /* 반응형 글자 */
+
+    padding: 0.7rem 1.2rem;      /* 버튼 크기 */
+    border: none;                /* 테두리 제거 */
+    border-radius: 6px;          /* 둥근 모서리 */
+    background-color: #333;      /* 배경색 */
+    color: white;                /* 글자색 */
+    cursor: pointer;             /* 마우스 오버 시 포인터 변경 */
+    transition: background-color 0.3s ease; /* 색 변화 부드럽게 */
+
+    /*height: 18vw;                     !* 높이 비율 지정 *!*/
+    /*max-width: 150px;                 !* 너무 커지지 않도록 제한 *!*/
+    /*max-height: 150px;*/
+    /*min-width: 80px;                  !* 너무 작아지지 않도록 제한 *!*/
+    /*min-height: 80px;*/
+}
+
+/* 마우스 올렸을 때 색상 변화 */
+.consonant-buttons button:hover {
+    background-color: #555;
+}
+
+.vowel-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5vw;
+    padding: 0 5vw; /* 양쪽 마진 비율 */
+    justify-content: center;
+
+    flex-wrap: wrap;
+    margin-top: calc(10vh);       /* 위쪽 여백 */
+    margin-bottom: 10vh;         /* 화면 높이의 n%만큼 여백 */
+}
+
+.vowel-buttons button {
+    aspect-ratio: 1 / 1;       /* 정사각형 */
+    width: 100%;               /* grid 셀을 꽉 채움 */
+    font-size: 1.5vw;          /* 반응형 글자 */
+
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.vowel-buttons button:hover {
+    background-color: #777;
+}
+
+/* 푸터 (페이지 맨 아래 부분) 스타일 */
+footer {
+    background-color: #eee;  /* 연회색 배경 */
+    text-align: center;      /* 가운데 정렬 */
+    padding: 1rem;           /* 안쪽 여백 */
+    font-size: 0.9rem;       /* 글자 크기 살짝 작게 */
+    color: #666;             /* 연한 회색 텍스트 */
+}
