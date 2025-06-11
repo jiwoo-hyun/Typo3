@@ -76,8 +76,8 @@ main {
 }
 
 .svg-name {
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
+    max-width: 900px;
     height: auto;
     display: block;
     margin: 0 auto;
