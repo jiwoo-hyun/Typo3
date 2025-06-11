@@ -1,58 +1,52 @@
+/* style.css */
+
 /* 모든 요소에 기본 여백 제거 + 박스 크기 계산 방식 통일 */
 * {
-    margin: 0;                /* 기본 마진 제거 */
-    padding: 0;               /* 기본 패딩 제거 */
-    box-sizing: border-box;  /* border와 padding을 width/height에 포함시킴 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* 전체 문서의 기본 글꼴과 배경 설정 */
 body {
-    font-family: sans-serif;  /* 기본 글꼴 설정 (고딕 계열) */
-    line-height: 1.6;         /* 줄 간격 */
-    background-color: #f9f9f9;/* 연한 회색 배경 */
-    color: #333;              /* 텍스트 색상 (짙은 회색) */
-    /* body 자체는 고정 */
+    font-family: sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #333;
     overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
-/*body::after {*/
-/*    content: "";*/
-/*    display: block;*/
-/*    height: 100vh; !* 한 화면 크기만큼 공간 추가 *!*/
-/*}*/
 
 /* 헤더 전체 영역 스타일 */
 header {
-    background-color: #333;  /* 어두운 배경색 */
-    color: white;            /* 글자색: 흰색 */
-    padding: 1rem 2rem;      /* 위아래 1rem, 좌우 2rem 여백 */
-    /* header는 고정 영역 (스크롤 안 됨) */
-    flex-shrink: 0; /* 크기 고정 */
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 1rem 2rem;
+    flex-shrink: 0;
 }
 
 .logo-group {
-    display: flex;                /* 로고와 제목을 가로로 나열 */
-    align-items: center;          /* 세로 가운데 정렬 */
+    display: flex;
+    align-items: center;
 }
 
 /* 로고 이미지 스타일 */
 .logo {
-    height: 40px;                 /* 로고 크기 */
-    margin-right: 1rem;           /* 제목과 간격 */
-    vertical-align: middle;       /* 세로 정렬 보정 */
+    height: 100px;
+    /*margin-right: 1rem;
+    vertical-align: middle;*/
 }
 
-/* 헤더 내부의 큰 제목 (h1) 스타일 */
+/* 헤더 내부의 큰 제목 (h1) 스타일 *
 header h1 {
-    margin-bottom: 0rem;   /* 제목 아래 여백 */
+    margin-bottom: 0rem;
 }
 
 /* 메인 콘텐츠 전체 패딩 */
 main {
-    padding: 0rem;           /* 안쪽 여백: 모든 방향 2rem */
-    /* main만 스크롤되도록 설정 */
+    padding: 0rem;
     flex-grow: 1;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -68,16 +62,25 @@ main {
     font-weight: bold;
     color: #333;
     z-index: 1000;
-    background-color: #fff; /* 배경 흰색 */
+    background-color: #fff;
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 0px;
+    border-color: #333;
+    /*box-shadow: 0 0 20px rgba(0,0,0,0.1);*/
     transition: opacity 1.6s ease, visibility 1.6s ease;
-    text-align: center;         /* 텍스트 가로 정렬 */
+    text-align: center;
     display: flex;
-    align-items: center;        /* 수직 중앙 정렬 */
-    justify-content: center;    /* 수평 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+}
+
+.svg-name {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 /* 숨겨질 때 */
@@ -88,45 +91,33 @@ main {
 
 /* 섹션 등장 애니메이션용 초기 상태 */
 .section {
-    opacity: 0;                    /* 투명도 0 → 안 보임 */
-    transform: translateY(400px);  /* 아래로 살짝 내려가 있음 */
-    transition: opacity 0.8s ease, transform 0.8s ease; /* 부드럽게 변함 */
+    opacity: 0;
+    transform: translateY(400px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 /* 스크롤 후 보이게 될 때 */
 .section.visible {
-    opacity: 1;                   /* 완전히 보이게 */
-    transform: translateY(0);     /* 제자리로 올라옴 */
+    opacity: 1;
+    transform: translateY(0);
 }
-
-/* 섹션 간 여백 */
-/*.section {*/
-/*    padding: 0rem 0rem;           !* 안쪽 여백 *!*/
-/*    margin-bottom: 0rem;          !* 섹션 사이 간격 *!*/
-/*    background-color: #fff;       !* 흰 배경 *!*/
-/*    border-radius: 0px;           !* 둥근 모서리 *!*/
-/*    box-shadow: 0 0px 0px rgba(0,0,0,0.05); !* 살짝 그림자 *!*/
-/*}*/
 
 /* 첫 번째 섹션만 배경색 다르게 하고 싶다면 */
 .section-selected {
-    background-color: #f0f8ff;    /* 연한 하늘색 배경 */
-    /* 기본 상태는 숨김 + 아래로 내려감 */
+    background-color: #ffffff;
     display: flex;
-    align-items: center;   /* 수직 정렬 */
+    align-items: center;
 
     opacity: 0;
     transform: translateY(100px);
-    /*transition: opacity 0.5s ease, transform 0.5s ease;*/
     position: sticky;
     top: 0;
     z-index: 500;
-    padding-left: 5vw;  /* 왼쪽 여백 */
-    padding-right: 5vw; /* 선택적으로 우측도 동일하게 맞추기 */
+    padding-left: 5vw;
+    padding-right: 5vw;
     padding-top: 1rem;
     padding-bottom: 1rem;
     min-height: 160px;
-
 }
 
 /* 기존 섹션 스타일 */
@@ -138,7 +129,7 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #f0f8ff;
-    position: relative; /* 기존 sticky 무시 */
+    position: relative;
     top: unset;
     transform: none;
 }
@@ -152,37 +143,41 @@ main {
 }
 
 #selected-buttons {
-    /*margin-top: 1rem;*/
     display: flex;
     gap: max(10px, 2vw);
     flex-wrap: wrap;
     align-items: center;
 }
 
-/* 전환된 상태의 selected-buttons */
 #selected-buttons.centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    gap: 20px;
-    z-index: 10;
+    align-items: flex-start;
+    gap: 2vw; /* 여백 조절 */
+    max-width: 90vw;
+    margin: 0 auto;
+    padding-bottom: 80px; /* 돌아가기 버튼과 간격 확보 */
 }
+
+
 
 .selected-char {
     padding: 0.7rem 1.2rem;
-    font-size: 1.2rem;
+    font-size: 0;
     border: none;
     border-radius: 6px;
-    background-color: #007bff;
-    color: white;
+    background-color: rgb(169, 176, 228);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     min-height: 160px;
     min-width: 160px;
+    /* selected-char 버튼에도 손 그래픽이 적용될 경우를 위해 추가 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%; /* 이미지가 버튼을 꽉 채우도록 */
+    position: relative;
+    color: black; /* selected-char 텍스트 색상 유지 */
 }
 
 /* 드래그 중 시각 효과 */
@@ -191,129 +186,423 @@ main {
 }
 
 /* 전환 버튼 */
+/* 저장 버튼 (기본 상태) */
 #save-button {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    padding: 0.5rem 1rem;
-    background-color: #28a745;
-    color: white;
+    width: 50px;
+    height: 50px;
+    background-image: url('images/save.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    background-color: transparent;
     border: none;
-    border-radius: 6px;
-    font-size: 1rem;
     cursor: pointer;
     z-index: 10;
     display: none;
+    padding: 0;
+    font-size: 0;
+    color: transparent;
 }
 
-#save-button.save {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* 기존 위치 속성 무효화 */
-    right: auto;
-    z-index: 999;
+#save-button:hover {
+    background-image: url('images/save.hover.svg');
 }
 
-/* 돌아가기 모드 (상단 중앙) */
+/* 돌아가기 모드 (클래스 .back이 붙은 경우) */
 #save-button.back {
     position: fixed;
-    /*top: 20px;*/
     left: 50%;
+    bottom: 80px;
     transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url('images/back.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 
-    /* 기존 위치 속성 무효화 */
-    right: auto;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 0;
+    color: transparent;
+    display: block;
     z-index: 999;
 }
+
+
+
+
 
 /* 두 번째 섹션만 강조하고 싶다면 */
 .section-button {
-    background-color: #fff8dc;    /* 연한 노란색 배경 */
-    /*text-align: center;*/
+    background-color: #ffffff;
     padding: 2rem;
 }
 
+/* 자음 + 된소리 */
+.consonant-buttons button[data-char="ㄱ"],
+.vowel-buttons button[data-char="ㄱ"] {
+    background-image: url('images/ga.frame.svg');
+}
+.consonant-buttons button[data-char="ㄱ"]:hover,
+.vowel-buttons button[data-char="ㄱ"]:hover {
+    background-image: url('images/ga.box.svg');
+}
+
+.consonant-buttons button[data-char="ㄴ"],
+.vowel-buttons button[data-char="ㄴ"] {
+    background-image: url('images/na.frame.svg');
+}
+.consonant-buttons button[data-char="ㄴ"]:hover,
+.vowel-buttons button[data-char="ㄴ"]:hover {
+    background-image: url('images/na.box.svg');
+}
+
+.consonant-buttons button[data-char="ㄷ"],
+.vowel-buttons button[data-char="ㄷ"] {
+    background-image: url('images/da.frame.svg');
+}
+.consonant-buttons button[data-char="ㄷ"]:hover,
+.vowel-buttons button[data-char="ㄷ"]:hover {
+    background-image: url('images/da.box.svg');
+}
+
+.consonant-buttons button[data-char="ㄹ"],
+.vowel-buttons button[data-char="ㄹ"] {
+    background-image: url('images/ra.frame.svg');
+}
+.consonant-buttons button[data-char="ㄹ"]:hover,
+.vowel-buttons button[data-char="ㄹ"]:hover {
+    background-image: url('images/ra.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅁ"],
+.vowel-buttons button[data-char="ㅁ"] {
+    background-image: url('images/ma.frame.svg');
+}
+.consonant-buttons button[data-char="ㅁ"]:hover,
+.vowel-buttons button[data-char="ㅁ"]:hover {
+    background-image: url('images/ma.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅂ"],
+.vowel-buttons button[data-char="ㅂ"] {
+    background-image: url('images/ba.frame.svg');
+}
+.consonant-buttons button[data-char="ㅂ"]:hover,
+.vowel-buttons button[data-char="ㅂ"]:hover {
+    background-image: url('images/ba.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅅ"],
+.vowel-buttons button[data-char="ㅅ"] {
+    background-image: url('images/sa.frame.svg');
+}
+.consonant-buttons button[data-char="ㅅ"]:hover,
+.vowel-buttons button[data-char="ㅅ"]:hover {
+    background-image: url('images/sa.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅇ"],
+.vowel-buttons button[data-char="ㅇ"] {
+    background-image: url('images/ang.frame.svg');
+}
+.consonant-buttons button[data-char="ㅇ"]:hover,
+.vowel-buttons button[data-char="ㅇ"]:hover {
+    background-image: url('images/ang.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅈ"],
+.vowel-buttons button[data-char="ㅈ"] {
+    background-image: url('images/ja.frame.svg');
+}
+.consonant-buttons button[data-char="ㅈ"]:hover,
+.vowel-buttons button[data-char="ㅈ"]:hover {
+    background-image: url('images/ja.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅊ"],
+.vowel-buttons button[data-char="ㅊ"] {
+    background-image: url('images/cha.frame.svg');
+}
+.consonant-buttons button[data-char="ㅊ"]:hover,
+.vowel-buttons button[data-char="ㅊ"]:hover {
+    background-image: url('images/cha.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅋ"],
+.vowel-buttons button[data-char="ㅋ"] {
+    background-image: url('images/ka.frame.svg');
+}
+.consonant-buttons button[data-char="ㅋ"]:hover,
+.vowel-buttons button[data-char="ㅋ"]:hover {
+    background-image: url('images/ka.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅌ"],
+.vowel-buttons button[data-char="ㅌ"] {
+    background-image: url('images/ta.frame.svg');
+}
+.consonant-buttons button[data-char="ㅌ"]:hover,
+.vowel-buttons button[data-char="ㅌ"]:hover {
+    background-image: url('images/ta.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅍ"],
+.vowel-buttons button[data-char="ㅍ"] {
+    background-image: url('images/pa.frame.svg');
+}
+.consonant-buttons button[data-char="ㅍ"]:hover,
+.vowel-buttons button[data-char="ㅍ"]:hover {
+    background-image: url('images/pa.box.svg');
+}
+
+.consonant-buttons button[data-char="ㅎ"],
+.vowel-buttons button[data-char="ㅎ"] {
+    background-image: url('images/ha.frame.svg');
+}
+.consonant-buttons button[data-char="ㅎ"]:hover,
+.vowel-buttons button[data-char="ㅎ"]:hover {
+    background-image: url('images/ha.box.svg');
+}
+
+.consonant-buttons button[data-char="된소리"],
+.vowel-buttons button[data-char="된소리"] {
+    background-image: url('images/gga.frame.svg');
+}
+.consonant-buttons button[data-char="된소리"]:hover,
+.vowel-buttons button[data-char="된소리"]:hover {
+    background-image: url('images/gga.box.svg');
+}
+
+/* 모음 */
+.vowel-buttons button[data-char="ㅏ"] {
+    background-image: url('images/a.frame.svg');
+}
+.vowel-buttons button[data-char="ㅏ"]:hover {
+    background-image: url('images/a.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅑ"] {
+    background-image: url('images/ya.frame.svg');
+}
+.vowel-buttons button[data-char="ㅑ"]:hover {
+    background-image: url('images/ya.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅓ"] {
+    background-image: url('images/eo.frame.svg');
+}
+.vowel-buttons button[data-char="ㅓ"]:hover {
+    background-image: url('images/eo.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅕ"] {
+    background-image: url('images/yeo.frame.svg');
+}
+.vowel-buttons button[data-char="ㅕ"]:hover {
+    background-image: url('images/yeo.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅗ"] {
+    background-image: url('images/o.frame.svg');
+}
+.vowel-buttons button[data-char="ㅗ"]:hover {
+    background-image: url('images/o.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅛ"] {
+    background-image: url('images/yo.frame.svg');
+}
+.vowel-buttons button[data-char="ㅛ"]:hover {
+    background-image: url('images/yo.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅜ"] {
+    background-image: url('images/u.frame.svg');
+}
+.vowel-buttons button[data-char="ㅜ"]:hover {
+    background-image: url('images/u.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅠ"] {
+    background-image: url('images/yu.frame.svg');
+}
+.vowel-buttons button[data-char="ㅠ"]:hover {
+    background-image: url('images/yu.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅡ"] {
+    background-image: url('images/eu.frame.svg');
+}
+.vowel-buttons button[data-char="ㅡ"]:hover {
+    background-image: url('images/eu.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅣ"] {
+    background-image: url('images/i.frame.svg');
+}
+.vowel-buttons button[data-char="ㅣ"]:hover {
+    background-image: url('images/i.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅐ"] {
+    background-image: url('images/ae.frame.svg');
+}
+.vowel-buttons button[data-char="ㅐ"]:hover {
+    background-image: url('images/ae.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅒ"] {
+    background-image: url('images/yae.frame.svg');
+}
+.vowel-buttons button[data-char="ㅒ"]:hover {
+    background-image: url('images/yae.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅔ"] {
+    background-image: url('images/e.frame.svg');
+}
+.vowel-buttons button[data-char="ㅔ"]:hover {
+    background-image: url('images/e.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅖ"] {
+    background-image: url('images/ye.frame.svg');
+}
+.vowel-buttons button[data-char="ㅖ"]:hover {
+    background-image: url('images/ye.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅚ"] {
+    background-image: url('images/oe.frame.svg');
+}
+.vowel-buttons button[data-char="ㅚ"]:hover {
+    background-image: url('images/oe.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅟ"] {
+    background-image: url('images/wi.frame.svg');
+}
+.vowel-buttons button[data-char="ㅟ"]:hover {
+    background-image: url('images/wi.box.svg');
+}
+
+.vowel-buttons button[data-char="ㅢ"] {
+    background-image: url('images/ui.frame.svg');
+}
+.vowel-buttons button[data-char="ㅢ"]:hover {
+    background-image: url('images/ui.box.svg');
+}
 
 
 /* 초성 버튼 컨테이너 */
 .consonant-buttons {
-    /*display: flex;               !* 버튼들을 가로로 정렬 *!*/
-    flex-wrap: wrap;             /* 줄 바꿈 허용 (모바일 대응) */
-    /*justify-content: center;   !* 가로 가운데 정렬 *!*/
-    /*gap: 10px;                   !* 버튼 간 간격 *!*/
-    margin-top: calc(10vh);       /* 위쪽 여백 */
-    margin-bottom: 10vh;         /* 화면 높이의 n%만큼 여백 */
-
+    flex-wrap: wrap;
+    margin-top: calc(10vh);
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5vw;
-    padding: 0 5vw; /* 양쪽 마진 비율 */
+    padding: 0 5vw;
     justify-content: center;
 }
 
-/* 버튼 개별 스타일 */
+/* 버튼 개별 스타일 (자음) */
 .consonant-buttons button {
-    aspect-ratio: 1 / 1;       /* 정사각형 */
-    width: 100%;               /* grid 셀을 꽉 채움 */
-    font-size: 1.5vw;          /* 반응형 글자 */
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    font-size: 0; /* 텍스트 크기 유지 */
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent; /* 이미지가 보이도록 투명 설정 */
+    color: black; /* 텍스트 색상 유지 */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변화만 부드럽게 */
+    position: relative;
+    overflow: hidden;
+    z-index: 0; /* 텍스트가 이미지 위에 오도록 z-index 조정 */
 
-    padding: 0.7rem 1.2rem;      /* 버튼 크기 */
-    border: none;                /* 테두리 제거 */
-    border-radius: 6px;          /* 둥근 모서리 */
-    background-color: #333;      /* 배경색 */
-    color: white;                /* 글자색 */
-    cursor: pointer;             /* 마우스 오버 시 포인터 변경 */
-    transition: background-color 0.3s ease; /* 색 변화 부드럽게 */
-
-    /*height: 18vw;                     !* 높이 비율 지정 *!*/
-    /*max-width: 150px;                 !* 너무 커지지 않도록 제한 *!*/
-    /*max-height: 150px;*/
-    /*min-width: 80px;                  !* 너무 작아지지 않도록 제한 *!*/
-    /*min-height: 80px;*/
+    /* script.js에서 할당하는 기본 배경 이미지 설정은 그대로 유지 */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%; /* 이미지가 버튼을 꽉 채우도록 */
 }
 
-/* 마우스 올렸을 때 색상 변화 */
+
+/* 마우스 올렸을 때의 변화 */
 .consonant-buttons button:hover {
-    background-color: #555;
+    /* hover 시에는 background-image를 변경하지 않습니다. */
+    /* background-image: var(--button-hover-graphic); (제거) */
+    /* background-size: 100% 100%; (제거) */
+    /* background-position: center; (제거) */
+    /* background-repeat: no-repeat; (제거) */
+    background-color: rgb(169, 176, 228); /* 원하는 hover 배경색으로 변경 */
+    /* border: none; // 이미 기본 스타일에서 제거됨 */
 }
+
+
 
 .vowel-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5vw;
-    padding: 0 5vw; /* 양쪽 마진 비율 */
+    padding: 0 5vw;
     justify-content: center;
 
     flex-wrap: wrap;
-    margin-top: calc(10vh);       /* 위쪽 여백 */
-    margin-bottom: 10vh;         /* 화면 높이의 n%만큼 여백 */
+    margin-top: calc(10vh);
+    margin-bottom: 10vh;
 }
 
+/* 모음 버튼 개별 스타일 (자음 버튼과 동일하게 수정) */
 .vowel-buttons button {
-    aspect-ratio: 1 / 1;       /* 정사각형 */
-    width: 100%;               /* grid 셀을 꽉 채움 */
-    font-size: 1.5vw;          /* 반응형 글자 */
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    font-size:0; /* 텍스트 크기 유지 */
 
     padding: 0.7rem 1.2rem;
     border: none;
     border-radius: 6px;
-    background-color: #555;
-    color: white;
+    background-color: transparent; /* 배경색 투명으로 설정 */
+    color: black; /* 텍스트 색상 유지 */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; /* 배경색 변화만 부드럽게 */
+    position: relative;
+    overflow: hidden;
+    z-index: 0; /* 텍스트가 이미지 위에 오도록 z-index 조정 */
+
+    /* 기본 배경 이미지 설정 (script.js에서 할당) */
+    background-size: 100% 100%; /* 이미지가 버튼을 꽉 채우도록 */
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+
 .vowel-buttons button:hover {
-    background-color: #777;
+    /* hover 시에는 background-image를 변경하지 않습니다. */
+    /* background-image: var(--button-hover-graphic); (제거) */
+    /* background-size: 100% 100%; (제거) */
+    /* background-position: center; (제거) */
+    /* background-repeat: no-repeat; (제거) */
+    background-color: rgb(169, 176, 228); /* 원하는 hover 배경색으로 변경 */
+    border: none;
 }
+
+
+
 
 /* 푸터 (페이지 맨 아래 부분) 스타일 */
 footer {
-    background-color: #eee;  /* 연회색 배경 */
-    text-align: center;      /* 가운데 정렬 */
-    padding: 1rem;           /* 안쪽 여백 */
-    font-size: 0.9rem;       /* 글자 크기 살짝 작게 */
-    color: #666;             /* 연한 회색 텍스트 */
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.7rem;
+    color: rgb(169, 176, 228);
 }
