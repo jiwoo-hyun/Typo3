@@ -604,3 +604,24 @@ footer {
     font-size: 0.7rem;
     color: rgb(169, 176, 228);
 }
+
+@media (max-width: 600px) {
+    .selected-char {
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .consonant-buttons button,
+    .vowel-buttons button {
+        min-width: 100px;
+        min-height: 100px;
+        background-size: cover;
+    }
+
+    .consonant-buttons,
+    .vowel-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 2vw;
+    }
+}
+
