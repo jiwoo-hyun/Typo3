@@ -607,21 +607,21 @@ footer {
 
 @media (max-width: 600px) {
     .selected-char {
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 45vw;
+        min-height: 45vw;
     }
 
     .consonant-buttons button,
     .vowel-buttons button {
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 45vw;
+        min-height: 45vw;
         background-size: cover;
     }
 
     .consonant-buttons,
     .vowel-buttons {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 2vw;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4vw;
     }
 }
 
